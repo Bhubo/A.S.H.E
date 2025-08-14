@@ -1,0 +1,45 @@
+Of course. Here is the complete pinout for ASHE, based on the final `Rev N` firmware.
+
+---
+## ASHE Pinout (Seeed Studio XIAO nRF2840)
+
+
+
+### Core Components
+
+| Component | Component Pin | XIAO Pin | Notes |
+| :--- | :--- | :--- | :--- |
+| **BNO085 IMU** | VCC | **3V3** | Power for the sensor. |
+| | GND | **Common Ground** | Connect to the battery's negative (-) terminal. |
+| | SDA | **D4** | I2C Data line. |
+| | SCL | **D5** | I2C Clock line. |
+| **Latching Switch** | Pin 1 | **D0** | The signal pin for Arm/Disarm. |
+| | Pin 2 | **Common Ground** | Connect to the battery's negative (-) terminal. |
+
+---
+### Outputs (Light, Sound, Haptics)
+
+| Component | Component Pin | XIAO Pin | Notes |
+| :--- | :--- | :--- | :--- |
+| **RGB LED A** | Red | **D2** | Connect through a **330Ω resistor**. |
+| | Green | **D3** | Connect through a **330Ω resistor**. |
+| | Blue | **D6** | Connect through a **330Ω resistor**. |
+| | Common Anode | **3V3** | The shared power pin for the LED. |
+| **RGB LED B** | Red | **D7** | Connect through a **330Ω resistor**. |
+| | Green | **D9** | Connect through a **330Ω resistor**. |
+| | Blue | **D10**| Connect through a **330Ω resistor**. |
+| | Common Anode | **3V3** | The shared power pin for the LED.. |
+| **Speaker** | Wire 1 | **D8** | Polarity does not matter. |
+| | Wire 2 | **Common Ground** | Connect to the battery's negative (-) terminal. |
+| **Motor MOSFET**| Gate | **D1** | Via a **100Ω resistor**. |
+| | Source | **Common Ground** | Connect to the battery's negative (-) terminal. |
+| | Drain | Motor (-) | The motor's negative lead. |
+
+---
+### Power Connections
+
+| Component | Component Pin | Connection Point | Notes |
+| :--- | :--- | :--- | :--- |
+| **Motor** | Positive (+) | **VBAT** / Battery (+) | **Crucial:** Motor gets power directly from the battery. |
+| **Battery Sensor**| (See notes) | **A1** | Connect to the midpoint of a voltage divider from **VBAT**. |
+| **Pull-down** | (See notes) | MOSFET Gate | Add a **100kΩ resistor** between the MOSFET Gate and **Common Ground**. |
